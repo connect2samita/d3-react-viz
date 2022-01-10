@@ -8,8 +8,16 @@ class App extends Component {
     return (
       <div className="App">
         <img src={logo} className="App-logo" alt="logo" />
-        <BarChart dataset="4,6,3,10,7" />
-        <BarChart dataset="10, 8, 3, 6, 2, 5" />
+        <div className='d-flex justify-content-space-around align-items-center vh-100'>
+          <div className='card'>
+            <div className='card-header'>Horizontal Bar Chart 1</div>
+            <div className='card-body'><BarChart id="bar1" dataset="4, 6, 3, 10, 7" /></div>
+          </div>
+          <div className='card'>
+            <div className='card-header'>Horizontal Bar Chart 2</div>
+            <div className='card-body'><BarChart id="bar2" dataset="10, 8, 3, 6, 2, 5" /></div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -4,8 +4,6 @@ import * as d3 from 'd3';
 class barChart extends React.Component {
     constructor(props) {
         super(props);
-
-        // this.horizontalBarChart = this.horizontalBarChart.bind(this);
     }
 
     horizontalChart(dataset) {
@@ -15,9 +13,10 @@ class barChart extends React.Component {
         var scaleFactor = 20;
         var barHeight = 30;
 
-        var colors = d3.scaleOrdinal(d3.schemeAccent);
+        // var colors = d3.scaleOrdinal(d3.schemeAccent);
+        var colors = d3.scaleSequential().domain([1,10]).interpolator(d3.interpolateViridis);
 
-        var container = d3.select('.bar-chart');
+        var container = d3.select('.bar-chart.' + this.props.id);
 
         var graph = container.append("svg")
             .attr("width", width)
@@ -36,6 +35,7 @@ class barChart extends React.Component {
                 return (d * scaleFactor);
             })
             .attr("height", barHeight - 10)
+            .attr("rx", 2)
             .attr("fill", function(d, i) {
                 return colors(d);
             });
@@ -62,7 +62,7 @@ class barChart extends React.Component {
 
     render() {
         return (
-            <div className="bar-chart"></div>
+            <div className={"bar-chart " + this.props.id}></div>
         );
     }
 }
